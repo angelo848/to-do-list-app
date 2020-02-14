@@ -13,6 +13,11 @@ export default function TodoList() {
     const newTask = currentValue
     setTasks([...tasks, newTask])
   }
+
+  const handleDeleteTask = value => {
+    const newTasks = tasks.filter((task, idx) => (idx !== value ? task : null))
+    setTasks(newTasks)
+  }
   return (
     <List>
       <form onSubmit={handleAddTask}>
@@ -23,7 +28,14 @@ export default function TodoList() {
         />
         <button type="submit">salvar</button>
       </form>
-      {tasks.map((task, idx) => <Task key={idx} value={task} />)}
+      {tasks.map((task, idx) => (
+        <Task
+          key={idx}
+          value={task}
+          index={idx}
+          onClick={handleDeleteTask}
+        />
+      ))}
     </List>
-  );
+  )
 }
