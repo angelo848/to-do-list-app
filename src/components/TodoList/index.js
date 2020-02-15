@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { List } from './styles'
+import { Form, List, Input, Button } from './styles'
 import Task from '../Task'
 
 export default function TodoList() {
@@ -11,7 +11,18 @@ export default function TodoList() {
     e.preventDefault()
 
     const newTask = currentValue
-    setTasks([...tasks, newTask])
+    setTasks([...tasks, { name: newTask, status: false }])
+  }
+
+  const handleToggleTask = index => {
+    const updatedTask = tasks[index]
+    updatedTask.status
+      ? (updatedTask.status = false)
+      : (updatedTask.status = true)
+    const newTasks = tasks.filter((task, idx) =>
+      idx === index ? updatedTask : task
+    )
+    setTasks(newTasks)
   }
 
   const handleDeleteTask = value => {
@@ -20,23 +31,27 @@ export default function TodoList() {
   }
 
   return (
-    <List>
-      <form onSubmit={handleAddTask}>
-        <input
+    <>
+      <Form onSubmit={handleAddTask}>
+        <Input
           type="text"
           name="todo"
+          placeholder="Adicionar uma tarefa"
           onChange={e => setCurrentValue(e.target.value)}
         />
-        <button type="submit">salvar</button>
-      </form>
-      {tasks.map((task, idx) => (
-        <Task
-          key={idx}
-          value={task}
-          index={idx}
-          deleteTask={handleDeleteTask}
-        />
-      ))}
-    </List>
+        <Button type="submit">Salvar</Button>
+      </Form>
+      <List>
+        {tasks.map((task, idx) => (
+          <Task
+            key={idx}
+            item={task}
+            index={idx}
+            toggleTask={() => handleToggleTask(idx)}
+            deleteTask={handleDeleteTask}
+          />
+        ))}
+      </List>
+    </>
   )
 }
