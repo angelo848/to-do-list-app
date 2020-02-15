@@ -1,12 +1,16 @@
 import React from 'react'
 
 import TodoList from './components/TodoList'
+import GlobalStyle from './styles/global'
+
+import { Title } from './styles/App'
 
 function App() {
   return (
     <div className="App">
-      <h1>Tarefas</h1>
+      <Title>Tarefas</Title>
       <TodoList />
+      <GlobalStyle />
     </div>
   )
 }
