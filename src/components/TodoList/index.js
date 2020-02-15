@@ -18,6 +18,7 @@ export default function TodoList() {
     const newTasks = tasks.filter((task, idx) => (idx !== value ? task : null))
     setTasks(newTasks)
   }
+
   return (
     <List>
       <form onSubmit={handleAddTask}>
@@ -33,7 +34,7 @@ export default function TodoList() {
           key={idx}
           value={task}
           index={idx}
-          onClick={handleDeleteTask}
+          deleteTask={handleDeleteTask}
         />
       ))}
     </List>
