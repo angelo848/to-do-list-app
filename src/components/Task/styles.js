@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Todo = styled.li`
   width: 375px;
   display: flex;
-  background-color: ${props => (props.status ? '#6bbf59' : '#4bc0d9')};
+  background-color: ${props => (props.status ? '#6bbf59' : props.color)};
   padding: 15px;
   color: #fff;
   margin-bottom: 10px;

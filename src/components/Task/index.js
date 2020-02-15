@@ -12,7 +12,7 @@ export default function Task(props) {
   const { name, status } = props.item
 
   return (
-    <Todo status={status}>
+    <Todo status={status} color={props.color}>
       <FontAwesomeIcon
         icon={status ? faCheckCircle : faCircle}
         onClick={props.toggleTask}
@@ -21,6 +21,7 @@ export default function Task(props) {
         {name}
         <FontAwesomeIcon
           icon={faTrashAlt}
+          size="lg"
           onClick={() => props.deleteTask(props.index)}
         />
       </div>
