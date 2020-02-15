@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faCircle,
@@ -9,20 +9,16 @@ import {
 import { Todo } from './styles'
 
 export default function Task(props) {
-  const [status, setStatus] = useState(false)
-
-  const toggleTask = () => {
-    status ? setStatus(false) : setStatus(true)
-  }
+  const { name, status } = props.item
 
   return (
-    <Todo color={props.color}>
+    <Todo status={status}>
       <FontAwesomeIcon
         icon={status ? faCheckCircle : faCircle}
-        onClick={toggleTask}
+        onClick={props.toggleTask}
       />
       <div>
-        {props.value}
+        {name}
         <FontAwesomeIcon
           icon={faTrashAlt}
           onClick={() => props.deleteTask(props.index)}
