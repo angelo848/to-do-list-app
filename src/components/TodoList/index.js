@@ -10,7 +10,7 @@ export default function TodoList() {
     '#4bc0d9',
     '#14248A',
     '#6E9887',
-    '#FFAD05',
+    '#C75146',
     '#276FBF',
     '#99E1D9',
     '#AF5B5B',
@@ -24,16 +24,22 @@ export default function TodoList() {
 
     const newTask = currentValue
     const color = generateRandomColor()
-    setTasks([...tasks, { name: newTask, status: false, color }])
+
+    setTasks([
+      ...tasks,
+      {
+        name: newTask,
+        status: false,
+        favored: false,
+        color
+      }
+    ])
     setCurrentValue('')
   }
 
-  const handleToggleTask = index => {
-    const updatedTask = tasks[index]
-
-    updatedTask.status
-      ? (updatedTask.status = false)
-      : (updatedTask.status = true)
+  const handleUpdateTask = (value, index) => {
+    let updatedTask = tasks[index]
+    updatedTask.name = value
     const newTasks = tasks.filter((task, idx) =>
       idx === index ? updatedTask : task
     )
@@ -43,12 +49,40 @@ export default function TodoList() {
 
   const handleDeleteTask = value => {
     const newTasks = tasks.filter((task, idx) => (idx !== value ? task : null))
+
+    setTasks(newTasks)
+  }
+
+  const handleToggleStatus = index => {
+    const updatedTask = tasks[index]
+
+    updatedTask.status
+      ? (updatedTask.status = false)
+      : (updatedTask.status = true)
+
+    const newTasks = tasks.filter((task, idx) =>
+      idx === index ? updatedTask : task
+    )
+
+    setTasks(newTasks)
+  }
+
+  const handleToggleFavor = index => {
+    const favoredTask = tasks[index]
+
+    favoredTask.favored
+      ? (favoredTask.favored = false)
+      : (favoredTask.favored = true)
+
+    const newTasks = tasks.filter((task, idx) =>
+      idx === index ? favoredTask : task
+    )
+
     setTasks(newTasks)
   }
 
   const generateRandomColor = () => {
-    let num = Math.random()
-    const cor = colors[Math.floor(num * 10)]
+    const cor = colors[Math.floor(Math.random() * 10)]
 
     return cor
   }
@@ -71,7 +105,9 @@ export default function TodoList() {
             key={idx}
             item={task}
             index={idx}
-            toggleTask={() => handleToggleTask(idx)}
+            toggleTask={() => handleToggleStatus(idx)}
+            favorTask={() => handleToggleFavor(idx)}
+            updateTask={handleUpdateTask}
             deleteTask={handleDeleteTask}
           />
         ))}

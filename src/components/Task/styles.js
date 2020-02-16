@@ -3,24 +3,37 @@ import styled from 'styled-components'
 export const Todo = styled.li`
   width: 600px;
   display: flex;
+  align-items: center;
   background-color: ${props => (props.status ? '#6bbf59' : props.color)};
-  padding: 15px;
-  color: #fff;
+  padding: 10px 15px;
   margin-bottom: 10px;
   border-radius: 5px;
   text-decoration: ${props => (props.status ? 'line-through' : 'normal')};
+  input {
+    color: #fff;
+    font-size: 18px;
+    height: 34px;
+    background-color: inherit;
+    border: none;
+    width: 80%;
+  }
   svg {
     cursor: pointer;
   }
   & > svg {
     margin-right: 30px;
   }
-  div {
+  div.wrapper {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    align-items: center;
   }
-  div svg {
+  div svg:first-child {
+    color: #ffad05;
+    margin-right: 15px;
+  }
+  div svg:last-child {
     color: #ef5d60;
   }
 `
