@@ -15,7 +15,12 @@ export const Todo = styled.li`
     height: 34px;
     background-color: inherit;
     border: none;
+    border-color: #fffffc;
     width: 80%;
+    transition: 0.25s border-bottom ease-in-out;
+  }
+  input:focus {
+    border-bottom: 2px solid #fffffc;
   }
   svg {
     cursor: pointer;

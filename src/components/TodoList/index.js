@@ -8,7 +8,7 @@ export default function TodoList() {
   const [currentValue, setCurrentValue] = useState('')
   const colors = [
     '#4bc0d9',
-    '#14248A',
+    '#3F334D',
     '#6E9887',
     '#C75146',
     '#276FBF',
