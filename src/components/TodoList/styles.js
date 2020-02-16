@@ -9,8 +9,8 @@ export const List = styled.ul`
 `
 
 export const Input = styled.input`
-  padding: 8px;
-  width: 40%;
+  padding: 10px;
+  width: 400px;
   border-radius: 5px;
   border: 1px solid #bababa;
   margin-right: 20px;

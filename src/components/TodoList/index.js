@@ -23,7 +23,8 @@ export default function TodoList() {
     e.preventDefault()
 
     const newTask = currentValue
-    setTasks([...tasks, { name: newTask, status: false }])
+    const color = generateRandomColor()
+    setTasks([...tasks, { name: newTask, status: false, color }])
     setCurrentValue('')
   }
 
@@ -45,6 +46,13 @@ export default function TodoList() {
     setTasks(newTasks)
   }
 
+  const generateRandomColor = () => {
+    let num = Math.random()
+    const cor = colors[Math.floor(num * 10)]
+
+    return cor
+  }
+
   return (
     <>
       <Form onSubmit={handleAddTask}>
@@ -63,7 +71,6 @@ export default function TodoList() {
             key={idx}
             item={task}
             index={idx}
-            color={colors[idx] ? colors[idx] : colors[idx - 10]}
             toggleTask={() => handleToggleTask(idx)}
             deleteTask={handleDeleteTask}
           />

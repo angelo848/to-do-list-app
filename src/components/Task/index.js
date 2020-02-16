@@ -9,10 +9,10 @@ import {
 import { Todo } from './styles'
 
 export default function Task(props) {
-  const { name, status } = props.item
+  const { name, status, color } = props.item
 
   return (
-    <Todo status={status} color={props.color}>
+    <Todo status={status} color={color}>
       <FontAwesomeIcon
         icon={status ? faCheckCircle : faCircle}
         onClick={props.toggleTask}

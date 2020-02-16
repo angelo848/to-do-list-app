@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Todo = styled.li`
-  width: 375px;
+  width: 600px;
   display: flex;
   background-color: ${props => (props.status ? '#6bbf59' : props.color)};
   padding: 15px;
