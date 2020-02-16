@@ -3,10 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faBars,
   faHome,
-  faCheckDouble,
-  faCalendar
+  faCheckDouble
 } from '@fortawesome/free-solid-svg-icons'
-import { faStar } from '@fortawesome/free-regular-svg-icons'
+import { faStar, faCalendar } from '@fortawesome/free-regular-svg-icons'
 
 import { Container, List } from './styles'
 
@@ -15,6 +14,7 @@ export default function Sidebar(props) {
   const { tasks } = props
   const favoredTasks = tasks.filter(task => task.favored === true)
   const finishedTasks = tasks.filter(task => task.status === true)
+  const scheduledTasks = tasks.filter(task => task.schedule === true)
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen)
@@ -55,7 +55,7 @@ export default function Sidebar(props) {
             <FontAwesomeIcon icon={faCalendar} />
             <span>Agendadas</span>
           </div>
-          <span>{finishedTasks.length}</span>
+          <span>{scheduledTasks.length}</span>
         </li>
         <li onClick={() => filterFavoredTasks('finished')}>
           <div>
