@@ -8,6 +8,8 @@ import { Title } from './styles/App'
 
 function App() {
   const [tasks, setTasks] = useState([])
+  const [filteredTasks, setFilteredTasks] = useState([])
+  const [renderizingTasks, setRenderizingTasks] = useState(false)
 
   const handleAddTask = (value, color) => {
     setTasks([
@@ -65,14 +67,19 @@ function App() {
     setTasks(newTasks)
   }
 
+  const filterTasks = (filteredTasks, filter) => {
+    setFilteredTasks(filteredTasks)
+    setRenderizingTasks(filter)
+  }
+
   return (
     <div className="App">
       <GlobalStyle />
-      <Sidebar className="menu" />
+      <Sidebar className="menu" tasks={tasks} filter={filterTasks} />
       <div className="todo">
         <Title>Tarefas</Title>
         <TodoList
-          tasks={tasks}
+          tasks={renderizingTasks ? filteredTasks : tasks}
           addTask={handleAddTask}
           editTask={handleUpdateTask}
           deleteTask={handleDeleteTask}
