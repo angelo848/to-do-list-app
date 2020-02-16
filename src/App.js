@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 
+import GlobalStyle from './styles/global'
 import TodoList from './components/TodoList'
 import Sidebar from './components/Sidebar'
-import GlobalStyle from './styles/global'
+import Calendar from './components/Calendar'
 
 import { Title } from './styles/App'
 
@@ -86,6 +87,7 @@ function App() {
           toggleStatus={handleToggleStatus}
           toggleFavor={handleToggleFavor}
         />
+        <Calendar />
       </div>
     </div>
   )

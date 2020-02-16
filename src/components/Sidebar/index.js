@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faBars,
   faHome,
-  faCheckDouble
+  faCheckDouble,
+  faCalendar
 } from '@fortawesome/free-solid-svg-icons'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
 
@@ -48,6 +49,13 @@ export default function Sidebar(props) {
             <span>Favoritos</span>
           </div>
           <span>{favoredTasks.length}</span>
+        </li>
+        <li onClick={() => filterFavoredTasks('scheduled')}>
+          <div>
+            <FontAwesomeIcon icon={faCalendar} />
+            <span>Agendadas</span>
+          </div>
+          <span>{finishedTasks.length}</span>
         </li>
         <li onClick={() => filterFavoredTasks('finished')}>
           <div>
