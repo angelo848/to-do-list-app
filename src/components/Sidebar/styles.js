@@ -13,6 +13,9 @@ export const Container = styled.div`
   &.closed {
     width: 50px;
   }
+  &.closed span {
+    display: none;
+  }
   svg {
     cursor: pointer;
     color: #f0f8ff;
@@ -23,4 +26,20 @@ export const Container = styled.div`
 export const List = styled.ul`
   margin-top: 30px;
   list-style: none;
+  li {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 10px 0;
+  }
+  li span:last-child {
+    margin-right: 20px;
+  }
+  li:hover {
+    background-color: #218084;
+  }
+  svg {
+    margin-right: 10px;
+  }
 `
