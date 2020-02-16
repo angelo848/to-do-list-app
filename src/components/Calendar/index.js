@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   format,
+  parseISO,
   startOfMonth,
   endOfMonth,
   startOfWeek,
@@ -76,7 +77,7 @@ export default class Calendar extends Component {
 
     while (day <= endDate) {
       for (let i = 0; i < 7; i++) {
-        const cloneDay = day
+        let cloneDay = format(day, 'yyyy-MM-dd')
         formattedDate = format(day, dateFormat)
         days.push(
           <div
@@ -88,6 +89,7 @@ export default class Calendar extends Component {
                 : ''
             }`}
             key={day}
+            onClick={() => this.onDateClick(parseISO(cloneDay))}
           >
             <span className="number">{formattedDate}</span>
             <span className="bg">{formattedDate}</span>
