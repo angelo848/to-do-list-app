@@ -14,7 +14,19 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .App {
-    margin: 50px 100px
+    display: inline-grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: 'sidebar main';
+    grid-gap: 30px;
+  }
+
+  .menu {
+    grid-area: sidebar
+  }
+
+  .todo {
+    grid-area: main
   }
 `
 

@@ -17,10 +17,12 @@ export const Todo = styled.li`
     border: none;
     border-color: #fffffc;
     width: 80%;
+    cursor: pointer;
     transition: 0.25s border-bottom ease-in-out;
   }
   input:focus {
     border-bottom: 2px solid #fffffc;
+    cursor: text;
   }
   svg {
     cursor: pointer;
