@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import { Form, List, Input, Button } from './styles'
 import Task from '../Task'
 
-export default function TodoList() {
-  const [tasks, setTasks] = useState([])
+export default function TodoList(props) {
+  const { tasks } = props
   const [currentValue, setCurrentValue] = useState('')
   const colors = [
     '#4bc0d9',
@@ -19,66 +19,30 @@ export default function TodoList() {
     '#394648'
   ]
 
-  const handleAddTask = e => {
+  const addTask = e => {
     e.preventDefault()
 
     const newTask = currentValue
     const color = generateRandomColor()
 
-    setTasks([
-      ...tasks,
-      {
-        name: newTask,
-        status: false,
-        favored: false,
-        color
-      }
-    ])
+    props.addTask(newTask, color)
     setCurrentValue('')
   }
 
   const handleUpdateTask = (value, index) => {
-    let updatedTask = tasks[index]
-    updatedTask.name = value
-    const newTasks = tasks.filter((task, idx) =>
-      idx === index ? updatedTask : task
-    )
-
-    setTasks(newTasks)
+    props.editTask(value, index)
   }
 
   const handleDeleteTask = value => {
-    const newTasks = tasks.filter((task, idx) => (idx !== value ? task : null))
-
-    setTasks(newTasks)
+    props.deleteTask(value)
   }
 
   const handleToggleStatus = index => {
-    const updatedTask = tasks[index]
-
-    updatedTask.status
-      ? (updatedTask.status = false)
-      : (updatedTask.status = true)
-
-    const newTasks = tasks.filter((task, idx) =>
-      idx === index ? updatedTask : task
-    )
-
-    setTasks(newTasks)
+    props.toggleStatus(index)
   }
 
   const handleToggleFavor = index => {
-    const favoredTask = tasks[index]
-
-    favoredTask.favored
-      ? (favoredTask.favored = false)
-      : (favoredTask.favored = true)
-
-    const newTasks = tasks.filter((task, idx) =>
-      idx === index ? favoredTask : task
-    )
-
-    setTasks(newTasks)
+    props.toggleFavor(index)
   }
 
   const generateRandomColor = () => {
@@ -89,7 +53,7 @@ export default function TodoList() {
 
   return (
     <>
-      <Form onSubmit={handleAddTask}>
+      <Form onSubmit={addTask}>
         <Input
           type="text"
           name="todo"
