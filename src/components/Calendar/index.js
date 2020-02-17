@@ -70,7 +70,7 @@ export default class Calendar extends Component {
     const startDate = startOfWeek(monthStart)
     const endDate = endOfWeek(monthEnd)
 
-    const dateFormat = 'd'
+    const dateFormat = 'dd'
     const rows = []
 
     let days = []
