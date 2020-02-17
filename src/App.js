@@ -13,6 +13,8 @@ function App() {
   const [renderizingTasks, setRenderizingTasks] = useState(false)
   const [calendar, setCalendar] = useState({})
 
+  const scheduledTasks = tasks.filter(task => task.schedule !== '')
+
   const handleAddTask = (value, color) => {
     setTasks([
       ...tasks,
@@ -115,6 +117,7 @@ function App() {
           className="calendar"
           scheduleTask={pickDate}
           indexTask={calendar.editingTask}
+          tasks={scheduledTasks}
         />
       )}
     </div>

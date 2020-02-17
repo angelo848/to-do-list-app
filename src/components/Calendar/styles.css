@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:300, 400, 700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
 
 .icon {
@@ -170,8 +170,14 @@ main {
 }
 
 .calendar .body .selected {
-  border-left: 10px solid transparent;
+  border-bottom: 10px solid transparent;
   border-image: linear-gradient(45deg, #1a8fff 0%, #53cbf1 40%);
+  border-image-slice: 1;
+}
+
+.calendar .body .scheduled {
+  border-bottom: 10px solid transparent;
+  border-image: linear-gradient(45deg, #ff761a 0%, #f18053 40%);
   border-image-slice: 1;
 }
 

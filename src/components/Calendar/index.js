@@ -81,6 +81,10 @@ export default class Calendar extends Component {
       for (let i = 0; i < 7; i++) {
         let cloneDay = format(day, 'yyyy-MM-dd')
         formattedDate = format(day, dateFormat)
+        let taskDay = day
+        var schedules = this.props.tasks
+          .filter(task => isSameDay(task.schedule, taskDay))
+          .map(task => task.schedule)
         days.push(
           <div
             className={`col cell ${
@@ -88,6 +92,8 @@ export default class Calendar extends Component {
                 ? 'disabled'
                 : isSameDay(day, selectedDate)
                 ? 'selected'
+                : isSameDay(day, schedules[0])
+                ? 'scheduled'
                 : ''
             }`}
             key={day}
