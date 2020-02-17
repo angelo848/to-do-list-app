@@ -17,16 +17,16 @@
   É um stateful component, guardando os estados das "tasks" (tarefas), "filteredTasks"
   (tarefas filtradas), menu lateral e calendário
 
-  As funções handleAddTask, handleUpdateTask e handleDeleteTask adicionam,
+  As funções `handleAddTask`, `handleUpdateTask` e `handleDeleteTask` adicionam,
   editam e deletam tarefas, repectivamente
 
-  As funções handleToggleStatus e handleToggleFavor alternam o status de uma tarefa,
+  As funções `handleToggleStatus` e `handleToggleFavor` alternam o status de uma tarefa,
   se ela foi ou não finalizada, e a importância dela.
 
-  A função filterTasks serve para filtrar as tarefas de acordo com o filtro desejado:
+  A função `filterTasks` serve para filtrar as tarefas de acordo com o filtro desejado:
   `favored`, `scheduled` ou `finished`. Renderizando apenas as tarefas desejadas.
 
-  A função toggleCalendar é utilizada para alterar o estado do calendário, para
+  A função `toggleCalendar` é utilizada para alterar o estado do calendário, para
   renderizá-lo apenas quando necessário, seja como datepicker, ou exibir as tarefas
 </p>
 
