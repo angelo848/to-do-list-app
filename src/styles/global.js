@@ -15,9 +15,9 @@ const GlobalStyle = createGlobalStyle`
 
   .App {
     display: inline-grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     grid-template-rows: auto;
-    grid-template-areas: 'sidebar main';
+    grid-template-areas: 'sidebar main calendar';
     grid-gap: 30px;
   }
 
@@ -27,6 +27,12 @@ const GlobalStyle = createGlobalStyle`
 
   .todo {
     grid-area: main
+  }
+
+  .calendar {
+    grid-area: calendar;
+    height: fit-content;
+    margin-top: 30px
   }
 `
 

@@ -37,6 +37,10 @@ export const Todo = styled.li`
     align-items: center;
   }
   div svg:first-child {
+    color: #fff;
+    margin-right: 15px;
+  }
+  div svg:nth-child(2) {
     color: #ffad05;
     margin-right: 15px;
   }

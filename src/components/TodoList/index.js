@@ -73,6 +73,7 @@ export default function TodoList(props) {
             favorTask={() => handleToggleFavor(idx)}
             updateTask={handleUpdateTask}
             deleteTask={handleDeleteTask}
+            toggleCalendar={props.toggleCalendar}
           />
         ))}
       </List>

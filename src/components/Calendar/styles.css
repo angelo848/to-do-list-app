@@ -113,7 +113,7 @@ main {
 .calendar {
   display: block;
   position: relative;
-  width: 100%;
+  width: 90%;
   background: var(--neutral-color);
   border: 1px solid var(--border-color);
 }
@@ -156,7 +156,7 @@ main {
 
 .calendar .body .cell {
   position: relative;
-  height: 5em;
+  height: 50px;
   border-right: 1px solid var(--border-color);
   overflow: hidden;
   cursor: pointer;

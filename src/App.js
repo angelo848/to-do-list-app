@@ -11,6 +11,7 @@ function App() {
   const [tasks, setTasks] = useState([])
   const [filteredTasks, setFilteredTasks] = useState([])
   const [renderizingTasks, setRenderizingTasks] = useState(false)
+  const [calendar, setCalendar] = useState({})
 
   const handleAddTask = (value, color) => {
     setTasks([
@@ -19,7 +20,8 @@ function App() {
         name: value,
         color,
         status: false,
-        favored: false
+        favored: false,
+        schedule: ''
       }
     ])
   }
@@ -73,6 +75,25 @@ function App() {
     setRenderizingTasks(filter)
   }
 
+  const toggleCalendar = index => {
+    setCalendar({
+      status: !calendar.status,
+      editingTask: index
+    })
+  }
+
+  const pickDate = (index, date) => {
+    const scheduledTask = tasks[index]
+
+    scheduledTask.schedule = date
+
+    const newTasks = tasks.filter((task, idx) =>
+      idx === index ? scheduledTask : task
+    )
+    setTasks(newTasks)
+    setCalendar({})
+  }
+
   return (
     <div className="App">
       <GlobalStyle />
@@ -86,9 +107,16 @@ function App() {
           deleteTask={handleDeleteTask}
           toggleStatus={handleToggleStatus}
           toggleFavor={handleToggleFavor}
+          toggleCalendar={toggleCalendar}
         />
-        <Calendar />
       </div>
+      {calendar.status && (
+        <Calendar
+          className="calendar"
+          scheduleTask={pickDate}
+          indexTask={calendar.editingTask}
+        />
+      )}
     </div>
   )
 }

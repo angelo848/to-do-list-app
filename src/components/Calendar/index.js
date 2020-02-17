@@ -37,8 +37,10 @@ export default class Calendar extends Component {
             {format(this.state.currentMonth, dateFormat, { locale: pt })}
           </span>
         </div>
-        <div className="col col-end" onClick={this.nextMonth}>
-          <div className="icon">chevron_right</div>
+        <div className="col col-end">
+          <div className="icon" onClick={this.nextMonth}>
+            chevron_right
+          </div>
         </div>
       </div>
     )
@@ -110,6 +112,7 @@ export default class Calendar extends Component {
 
   onDateClick = day => {
     this.setState({ selectedDate: day })
+    this.props.scheduleTask(this.props.indexTask, day)
   }
 
   nextMonth = () => {

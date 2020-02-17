@@ -4,7 +4,8 @@ import {
   faCircle,
   faCheckCircle,
   faTrashAlt,
-  faStar
+  faStar,
+  faCalendar
 } from '@fortawesome/free-regular-svg-icons'
 import { faStar as favoredStar } from '@fortawesome/free-solid-svg-icons'
 
@@ -25,6 +26,10 @@ export default function Task(props) {
           onChange={event => props.updateTask(event.target.value, props.index)}
         />
         <div className="icon-wrapper">
+          <FontAwesomeIcon
+            icon={faCalendar}
+            onClick={() => props.toggleCalendar(props.index)}
+          />
           <FontAwesomeIcon
             icon={favored ? favoredStar : faStar}
             onClick={() => props.favorTask(props.index)}
