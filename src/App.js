@@ -10,7 +10,9 @@ import { Title } from './styles/App'
 function App() {
   const [tasks, setTasks] = useState([])
   const [filteredTasks, setFilteredTasks] = useState([])
-  const [renderizingTasks, setRenderizingTasks] = useState(false)
+  const [renderizingFilteredTasks, setRenderizingFilteredTasks] = useState(
+    false
+  )
   const [calendar, setCalendar] = useState({})
 
   const scheduledTasks = tasks.filter(task => task.schedule !== '')
@@ -74,7 +76,7 @@ function App() {
 
   const filterTasks = (filteredTasks, filter) => {
     setFilteredTasks(filteredTasks)
-    setRenderizingTasks(filter)
+    setRenderizingFilteredTasks(filter)
     if (filter === 'scheduled') {
       toggleCalendar()
     } else {
@@ -110,7 +112,7 @@ function App() {
       <div className="todo">
         <Title>Tarefas</Title>
         <TodoList
-          tasks={renderizingTasks ? filteredTasks : tasks}
+          tasks={renderizingFilteredTasks ? filteredTasks : tasks}
           addTask={handleAddTask}
           editTask={handleUpdateTask}
           deleteTask={handleDeleteTask}
