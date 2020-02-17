@@ -14,19 +14,19 @@ export default function Sidebar(props) {
   const { tasks } = props
   const favoredTasks = tasks.filter(task => task.favored === true)
   const finishedTasks = tasks.filter(task => task.status === true)
-  const scheduledTasks = tasks.filter(task => task.schedule === true)
+  const scheduledTasks = tasks.filter(task => task.schedule !== '')
 
   const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen)
   }
 
-  const filterFavoredTasks = filter => {
+  const filterTasks = filter => {
     if (filter === 'favored') {
-      const favoredTasks = tasks.filter(task => task.favored)
-      props.filter(favoredTasks, true)
+      props.filter(favoredTasks, filter)
+    } else if (filter === 'scheduled') {
+      props.filter(scheduledTasks, filter)
     } else if (filter === 'finished') {
-      const finishedTasks = tasks.filter(task => task.status)
-      props.filter(finishedTasks, true)
+      props.filter(finishedTasks, filter)
     } else {
       props.filter(false)
     }
@@ -36,28 +36,28 @@ export default function Sidebar(props) {
     <Container className={sidebarOpen ? 'open' : 'closed'}>
       <FontAwesomeIcon icon={faBars} onClick={toggleSidebar} />
       <List>
-        <li onClick={() => filterFavoredTasks('total')}>
+        <li onClick={() => filterTasks('total')}>
           <div>
             <FontAwesomeIcon icon={faHome} />
             <span>Tarefas</span>
           </div>
           <span>{tasks.length}</span>
         </li>
-        <li onClick={() => filterFavoredTasks('favored')}>
+        <li onClick={() => filterTasks('favored')}>
           <div>
             <FontAwesomeIcon icon={faStar} />
-            <span>Favoritos</span>
+            <span>Importante</span>
           </div>
           <span>{favoredTasks.length}</span>
         </li>
-        <li onClick={() => filterFavoredTasks('scheduled')}>
+        <li onClick={() => filterTasks('scheduled')}>
           <div>
             <FontAwesomeIcon icon={faCalendar} />
             <span>Agendadas</span>
           </div>
           <span>{scheduledTasks.length}</span>
         </li>
-        <li onClick={() => filterFavoredTasks('finished')}>
+        <li onClick={() => filterTasks('finished')}>
           <div>
             <FontAwesomeIcon icon={faCheckDouble} />
             <span>Concluídas</span>

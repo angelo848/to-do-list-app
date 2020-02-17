@@ -5,7 +5,7 @@ export const Todo = styled.li`
   display: flex;
   align-items: center;
   background-color: ${props => (props.status ? '#6bbf59' : props.color)};
-  padding: 10px 15px;
+  padding: 15px 15px;
   margin-bottom: 10px;
   border-radius: 5px;
   text-decoration: ${props => (props.status ? 'line-through' : 'normal')};
@@ -16,7 +16,7 @@ export const Todo = styled.li`
     background-color: inherit;
     border: none;
     border-color: #fffffc;
-    width: 80%;
+    width: 100%;
     cursor: pointer;
     transition: 0.25s border-bottom ease-in-out;
   }
@@ -46,5 +46,16 @@ export const Todo = styled.li`
   }
   div svg:last-child {
     color: #ef5d60;
+  }
+  .info {
+    display: flex;
+    flex-flow: column;
+    width: 80%;
+    height: 34px;
+  }
+
+  .info span {
+    color: #fff;
+    font-size: 13px;
   }
 `

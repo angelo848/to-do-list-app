@@ -75,6 +75,13 @@ function App() {
   const filterTasks = (filteredTasks, filter) => {
     setFilteredTasks(filteredTasks)
     setRenderizingTasks(filter)
+    if (filter === 'scheduled') {
+      toggleCalendar()
+    } else {
+      if (calendar.status !== false) {
+        toggleCalendar()
+      }
+    }
   }
 
   const toggleCalendar = index => {
